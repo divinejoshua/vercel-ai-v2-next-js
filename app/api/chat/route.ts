@@ -10,6 +10,10 @@ const openai = new OpenAI({
 export const runtime = 'edge';
 
 export async function POST(req: Request) {
+  // Run your functions in here
+  seoSearch()
+  messageResponse()
+
   const { messages } = await req.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
@@ -23,4 +27,17 @@ export async function POST(req: Request) {
   const stream = OpenAIStream(response);
   // Respond with the stream
   return new StreamingTextResponse(stream);
+}
+
+
+// SEO search
+const seoSearch = async () => {
+  console.log("This is the SEO search")
+  return true
+}
+
+// This is the message response
+const messageResponse = async () =>{
+  console.log("This is the Message response")
+  return true
 }
